@@ -5,6 +5,11 @@ import re
 import random
 import google.generativeai as genai
 
+def get_stable_hash(s):
+    """파이썬 프로세스 재실행 및 세션 리런 시에도 언제나 동일한 정수 해시값을 보장합니다."""
+    return sum(ord(c) * (i + 1) for i, c in enumerate(s))
+
+
 # Matrix 조합 성분 정의
 MATRIX_AGES = ["60대", "70대", "80대", "실버세대", "노령층"]
 MATRIX_TARGETS = ["어머니", "아버지", "부모님", "혼자 사는 어머니", "혼자 사는 아버지", "독거노인 부모님"]
@@ -73,8 +78,9 @@ def expand_keyword_matrix(base_keyword, api_key):
             
     # 3. API Key가 없을 때의 로컬 자율 합성 폴백 가동
     if not api_key:
-        random.seed(hash(base_keyword))
+        random.seed(get_stable_hash(base_keyword))
         fallback_results = []
+
         
         # 10대 구체적 롱테일 키워드 결합 생성
         templates = [
@@ -119,7 +125,8 @@ def expand_keyword_matrix(base_keyword, api_key):
 
     # 4. AI(Gemini) 지능형 롱테일 매칭
     genai.configure(api_key=api_key)
-    model = genai.GenerativeModel('gemini-2.5-flash')
+    model = genai.GenerativeModel('gemini-1.5-flash')
+
     
     prompt = f"""
     당신은 블로그 키워드 마케팅 및 노출 전문가입니다.
