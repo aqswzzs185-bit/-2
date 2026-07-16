@@ -118,7 +118,20 @@ def persist_current_state():
 st.sidebar.markdown("# ⚙️ 환경 설정")
 st.sidebar.markdown("프로그램 동작에 필요한 설정값을 입력하세요.")
 
-gemini_key = st.sidebar.text_input("Google Gemini API Key", value=cfg.get("GEMINI_API_KEY", ""), type="password", help="Gemini API 키를 입력해 주세요.")
+if "gemini_api_key" not in st.session_state:
+    st.session_state.gemini_api_key = cfg.get("GEMINI_API_KEY", "")
+
+gemini_key = st.sidebar.text_input(
+    "Google Gemini API Key", 
+    value=st.session_state.gemini_api_key, 
+    type="password", 
+    key="gemini_api_key_input",
+    help="Gemini API 키를 입력해 주세요."
+)
+# 사용자가 입력한 최신 키를 세션 메모리에 즉시 강제 잠금 보존
+st.session_state.gemini_api_key = gemini_key.strip() if gemini_key else ""
+gemini_key = st.session_state.gemini_api_key
+
 naver_id = st.sidebar.text_input("Naver ID", value=cfg.get("NAVER_ID", ""), help="네이버 블로그의 주인 아이디를 입력합니다. (비워둘 시 네이버 메인으로 이동)")
 naver_client_id = st.sidebar.text_input("Naver Client ID (데이터랩)", value=cfg.get("NAVER_CLIENT_ID", ""), type="password", help="네이버 데이터랩 수집용 Client ID")
 naver_client_secret = st.sidebar.text_input("Naver Client Secret (데이터랩)", value=cfg.get("NAVER_CLIENT_SECRET", ""), type="password", help="네이버 데이터랩 수집용 Client Secret")
@@ -126,7 +139,7 @@ chrome_profile = st.sidebar.text_input("Chrome Profile Path", value=cfg.get("CHR
 tone = st.sidebar.text_area("기본 글쓰기 성향 가이드", value=cfg.get("DEFAULT_TONE", ""), height=100)
 
 if st.sidebar.button("설정 저장", use_container_width=True):
-    cfg["GEMINI_API_KEY"] = gemini_key
+    cfg["GEMINI_API_KEY"] = st.session_state.gemini_api_key
     cfg["NAVER_ID"] = naver_id
     cfg["NAVER_CLIENT_ID"] = naver_client_id
     cfg["NAVER_CLIENT_SECRET"] = naver_client_secret
@@ -138,11 +151,11 @@ if st.sidebar.button("설정 저장", use_container_width=True):
         st.sidebar.error("설정 저장에 실패했습니다.")
 
 if st.sidebar.button("🔍 API Key 작동 진단 테스트", use_container_width=True):
-    if not gemini_key:
+    if not st.session_state.gemini_api_key:
         st.sidebar.error("진단할 API Key를 먼저 입력해 주세요.")
     else:
         with st.sidebar.spinner("구글 서버에 연결 진단 중..."):
-            cleaned_key = gemini_key.strip()
+            cleaned_key = st.session_state.gemini_api_key
             masked_key = f"{cleaned_key[:5]}...{cleaned_key[-4:]}" if len(cleaned_key) > 10 else "Invalid Key"
             try:
                 test_response = generator.call_gemini_rest_api(cleaned_key, "Hello, respond with 'OK'")
@@ -245,7 +258,7 @@ with col_grp1:
         
     # 3. 글 초안 생성
     if btn_col1.button("✍️ 글 초안 생성", use_container_width=True):
-        if not gemini_key:
+        if not st.session_state.gemini_api_key:
             st.error("Gemini API Key를 등록해 주세요.")
         elif not main_keyword_val:
             st.error("메인 키워드를 입력해 주세요.")
@@ -257,7 +270,7 @@ with col_grp1:
             if not st.session_state.force_generate and (dup_res["keyword_dup"] or dup_res["product_recent"]):
                 with st.spinner("중복 이력 분석 중..."):
                     existing_titles = [post.get("title", "") for post in history_list if post.get("title")]
-                    angles = similarity_checker.suggest_new_angles(gemini_key, main_keyword_val, products_display_val, existing_titles)
+                    angles = similarity_checker.suggest_new_angles(st.session_state.gemini_api_key, main_keyword_val, products_display_val, existing_titles)
                     st.session_state.dup_warning_data = dup_res
                     st.session_state.angle_suggestions = angles
                     persist_current_state()
@@ -270,7 +283,7 @@ with col_grp1:
                 if selected_product_val != "직접 입력":
                     db_product_info = products_db.get(selected_db_cat_val, {}).get(selected_product_val, {})
                 result = generator.generate_blog_post(
-                    api_key=gemini_key,
+                    api_key=st.session_state.gemini_api_key,
                     main_keyword=main_keyword_val,
                     post_type=last_inputs.get("post_type", "부모님 선물 추천형"),
                     targets=last_inputs.get("targets", []),
