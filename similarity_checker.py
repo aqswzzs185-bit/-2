@@ -172,7 +172,7 @@ def suggest_new_angles(api_key: str, main_keyword: str, product: str, existing_t
         import os
         os.environ["API_VERSION"] = "v1"
         genai.configure(api_key=api_key)
-        model = genai.GenerativeModel('gemini-1.5-flash')
+        model = genai.GenerativeModel('models/gemini-1.5-flash')
         
         titles_str = "\n".join([f"- {t}" for t in existing_titles]) if existing_titles else "없음"
         
@@ -207,10 +207,7 @@ def suggest_new_angles(api_key: str, main_keyword: str, product: str, existing_t
   }}
 ]
 """
-        response = model.generate_content(
-            prompt,
-            generation_config={"response_mime_type": "application/json"}
-        )
+        response = model.generate_content(prompt)
         
         response_text = response.text.strip()
         

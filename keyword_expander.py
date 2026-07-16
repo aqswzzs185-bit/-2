@@ -129,7 +129,7 @@ def expand_keyword_matrix(base_keyword, api_key):
     import os
     os.environ["API_VERSION"] = "v1"
     genai.configure(api_key=api_key)
-    model = genai.GenerativeModel('gemini-1.5-flash')
+    model = genai.GenerativeModel('models/gemini-1.5-flash')
 
     
     prompt = f"""

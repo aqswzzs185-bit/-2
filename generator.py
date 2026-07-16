@@ -29,7 +29,7 @@ def generate_blog_post(
         import os
         os.environ["API_VERSION"] = "v1"
         genai.configure(api_key=api_key)
-        model = genai.GenerativeModel('gemini-1.5-flash')
+        model = genai.GenerativeModel('models/gemini-1.5-flash')
         
         targets_str = ", ".join(targets) if targets else "부모님"
         situations_str = ", ".join(situations) if situations else "안전 및 건강 관리"
@@ -242,7 +242,7 @@ def regenerate_titles(api_key: str, main_keyword: str, content: str, products: s
         import google.generativeai as genai
         import re
         genai.configure(api_key=api_key)
-        model = genai.GenerativeModel('gemini-1.5-flash')
+        model = genai.GenerativeModel('models/gemini-1.5-flash')
         
         prompt = f"""
 당신은 네이버 블로그 전문 카피라이터입니다.
@@ -311,7 +311,7 @@ def regenerate_image_prompts(api_key: str, content: str, products: str) -> dict:
         import google.generativeai as genai
         import re
         genai.configure(api_key=api_key)
-        model = genai.GenerativeModel('gemini-1.5-flash')
+        model = genai.GenerativeModel('models/gemini-1.5-flash')
         
         prompt = f"""
 당신은 네이버 블로그에 사용할 포토그래픽 아티스트입니다.
