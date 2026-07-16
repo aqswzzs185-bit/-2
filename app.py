@@ -137,6 +137,17 @@ if st.sidebar.button("설정 저장", use_container_width=True):
     else:
         st.sidebar.error("설정 저장에 실패했습니다.")
 
+if st.sidebar.button("🔍 API Key 작동 진단 테스트", use_container_width=True):
+    if not gemini_key:
+        st.sidebar.error("진단할 API Key를 먼저 입력해 주세요.")
+    else:
+        with st.sidebar.spinner("구글 서버에 연결 진단 중..."):
+            try:
+                test_response = generator.call_gemini_rest_api(gemini_key.strip(), "Hello, respond with 'OK'")
+                st.sidebar.success(f"🟢 연결 성공! 구글 응답: {test_response.strip()}")
+            except Exception as ex:
+                st.sidebar.error(f"🔴 연결 실패!\n구글 응답 메시지:\n{str(ex)}")
+
 
 # 메인 UI
 st.title("👵 부모님 생활 블로그 자동화 도우미")

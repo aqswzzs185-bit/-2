@@ -10,7 +10,8 @@ def call_gemini_rest_api(api_key: str, prompt: str, model_name: str = "gemini-1.
     v1beta 엔드포인트에서 지원하는 표준 모델 명칭인 gemini-1.5-flash 사양을 사용합니다.
     """
     clean_model_name = model_name.replace("models/", "")
-    url = f"https://generativelanguage.googleapis.com/v1beta/models/{clean_model_name}:generateContent?key={api_key}"
+    clean_key = api_key.strip() if api_key else ""
+    url = f"https://generativelanguage.googleapis.com/v1beta/models/{clean_model_name}:generateContent?key={clean_key}"
     headers = {"Content-Type": "application/json"}
     data = {
         "contents": [
