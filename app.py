@@ -10,6 +10,7 @@ import similarity_checker
 import workspace_state
 import json
 import os
+os.environ["API_VERSION"] = "v1"
 import time
 import platform
 from datetime import datetime

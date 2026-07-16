@@ -24,6 +24,8 @@ def generate_blog_post(
         return {"error": "Gemini API Key가 설정되지 않았습니다. 설정에서 등록해 주세요."}
     
     try:
+        import os
+        os.environ["API_VERSION"] = "v1"
         genai.configure(api_key=api_key)
         model = genai.GenerativeModel('gemini-1.5-flash')
         
@@ -236,6 +238,8 @@ def regenerate_titles(api_key: str, main_keyword: str, content: str, products: s
     if not api_key:
         return {"error": "API Key가 유효하지 않습니다."}
     try:
+        import os
+        os.environ["API_VERSION"] = "v1"
         import google.generativeai as genai
         import re
         genai.configure(api_key=api_key)
@@ -306,6 +310,8 @@ def regenerate_image_prompts(api_key: str, content: str, products: str) -> dict:
     if not api_key:
         return {"error": "API Key가 유효하지 않습니다."}
     try:
+        import os
+        os.environ["API_VERSION"] = "v1"
         import google.generativeai as genai
         import re
         genai.configure(api_key=api_key)

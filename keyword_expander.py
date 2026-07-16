@@ -124,6 +124,8 @@ def expand_keyword_matrix(base_keyword, api_key):
         return {"expanded_keywords": fallback_results}
 
     # 4. AI(Gemini) 지능형 롱테일 매칭
+    import os
+    os.environ["API_VERSION"] = "v1"
     genai.configure(api_key=api_key)
     model = genai.GenerativeModel('gemini-1.5-flash')
 

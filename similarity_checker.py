@@ -167,6 +167,8 @@ def suggest_new_angles(api_key: str, main_keyword: str, product: str, existing_t
         ]
         
     try:
+        import os
+        os.environ["API_VERSION"] = "v1"
         genai.configure(api_key=api_key)
         model = genai.GenerativeModel('gemini-1.5-flash')
         
