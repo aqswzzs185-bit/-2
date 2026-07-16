@@ -1,8 +1,51 @@
 import os
-os.environ["API_VERSION"] = "v1"
-import google.generativeai as genai
 import json
 import re
+import urllib.request
+import urllib.error
+
+def call_gemini_rest_api(api_key: str, prompt: str, model_name: str = "gemini-1.5-flash") -> str:
+    """
+    google-generativeai SDK의 404 엔드포인트 충돌을 완벽히 방지하기 위해
+    구글 공식 Gemini v1 REST API로 직접 POST 요청을 날려 텍스트 결과를 반환합니다.
+    """
+    url = f"https://generativelanguage.googleapis.com/v1/models/{model_name}:generateContent?key={api_key}"
+    headers = {"Content-Type": "application/json"}
+    data = {
+        "contents": [
+            {
+                "parts": [
+                    {
+                        "text": prompt
+                    }
+                ]
+            }
+        ]
+    }
+    req_body = json.dumps(data).encode("utf-8")
+    req = urllib.request.Request(url, data=req_body, headers=headers, method="POST")
+    
+    try:
+        with urllib.request.urlopen(req, timeout=60) as response:
+            res_data = json.loads(response.read().decode("utf-8"))
+            candidates = res_data.get("candidates", [])
+            if candidates:
+                content = candidates[0].get("content", {})
+                parts = content.get("parts", [])
+                if parts:
+                    return parts[0].get("text", "")
+            raise Exception("올바른 응답 데이터를 받지 못했습니다.")
+    except urllib.error.HTTPError as e:
+        error_body = e.read().decode("utf-8")
+        try:
+            error_json = json.loads(error_body)
+            err_msg = error_json.get("error", {}).get("message", str(e))
+        except Exception:
+            err_msg = error_body
+        raise Exception(f"HTTP {e.code}: {err_msg}")
+    except Exception as e:
+        raise Exception(str(e))
+
 
 def generate_blog_post(
     api_key: str, 
@@ -26,10 +69,6 @@ def generate_blog_post(
         return {"error": "Gemini API Key가 설정되지 않았습니다. 설정에서 등록해 주세요."}
     
     try:
-        import os
-        os.environ["API_VERSION"] = "v1"
-        genai.configure(api_key=api_key)
-        model = genai.GenerativeModel('models/gemini-1.5-flash')
         
         targets_str = ", ".join(targets) if targets else "부모님"
         situations_str = ", ".join(situations) if situations else "안전 및 건강 관리"
@@ -201,9 +240,7 @@ def generate_blog_post(
 }}
 """
         
-        response = model.generate_content(prompt)
-        
-        response_text = response.text.strip()
+        response_text = call_gemini_rest_api(api_key, prompt).strip()
         
         if response_text.startswith("```json"):
             response_text = re.sub(r"^```json\s*", "", response_text)
@@ -223,7 +260,7 @@ def generate_blog_post(
         
     except json.JSONDecodeError as je:
         print(f"JSON 파싱 실패: {je}")
-        print(f"원본 응답: {response.text}")
+        print(f"원본 응답: {response_text}")
         return {"error": "AI의 응답 형식을 JSON으로 파싱하는 데 실패했습니다. 다시 시도해 주세요."}
     except Exception as e:
         print(f"블로그 글 생성 오류: {e}")
@@ -237,12 +274,6 @@ def regenerate_titles(api_key: str, main_keyword: str, content: str, products: s
     if not api_key:
         return {"error": "API Key가 유효하지 않습니다."}
     try:
-        import os
-        os.environ["API_VERSION"] = "v1"
-        import google.generativeai as genai
-        import re
-        genai.configure(api_key=api_key)
-        model = genai.GenerativeModel('models/gemini-1.5-flash')
         
         prompt = f"""
 당신은 네이버 블로그 전문 카피라이터입니다.
@@ -284,8 +315,7 @@ def regenerate_titles(api_key: str, main_keyword: str, content: str, products: s
   "selected_title": "위 5개 제목 후보의 'title' 중 가장 자연스러운 추천 제목 1개 선택 (글자수 25~45자 필수 만족)"
 }}
 """
-        response = model.generate_content(prompt)
-        response_text = response.text.strip()
+        response_text = call_gemini_rest_api(api_key, prompt).strip()
         if response_text.startswith("```json"):
             response_text = re.sub(r"^```json\s*", "", response_text)
             response_text = re.sub(r"\s*```$", "", response_text)
@@ -306,12 +336,6 @@ def regenerate_image_prompts(api_key: str, content: str, products: str) -> dict:
     if not api_key:
         return {"error": "API Key가 유효하지 않습니다."}
     try:
-        import os
-        os.environ["API_VERSION"] = "v1"
-        import google.generativeai as genai
-        import re
-        genai.configure(api_key=api_key)
-        model = genai.GenerativeModel('models/gemini-1.5-flash')
         
         prompt = f"""
 당신은 네이버 블로그에 사용할 포토그래픽 아티스트입니다.
@@ -358,8 +382,7 @@ def regenerate_image_prompts(api_key: str, content: str, products: str) -> dict:
   ]
 }}
 """
-        response = model.generate_content(prompt)
-        response_text = response.text.strip()
+        response_text = call_gemini_rest_api(api_key, prompt).strip()
         if response_text.startswith("```json"):
             response_text = re.sub(r"^```json\s*", "", response_text)
             response_text = re.sub(r"\s*```$", "", response_text)

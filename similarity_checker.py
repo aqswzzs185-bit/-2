@@ -1,8 +1,7 @@
 import os
-os.environ["API_VERSION"] = "v1"
-import google.generativeai as genai
 import json
 import re
+from generator import call_gemini_rest_api
 from datetime import datetime
 
 def get_jaccard_similarity(str1: str, str2: str, by_char: bool = True) -> float:
@@ -169,10 +168,6 @@ def suggest_new_angles(api_key: str, main_keyword: str, product: str, existing_t
         ]
         
     try:
-        import os
-        os.environ["API_VERSION"] = "v1"
-        genai.configure(api_key=api_key)
-        model = genai.GenerativeModel('models/gemini-1.5-flash')
         
         titles_str = "\n".join([f"- {t}" for t in existing_titles]) if existing_titles else "없음"
         
@@ -207,9 +202,7 @@ def suggest_new_angles(api_key: str, main_keyword: str, product: str, existing_t
   }}
 ]
 """
-        response = model.generate_content(prompt)
-        
-        response_text = response.text.strip()
+        response_text = call_gemini_rest_api(api_key, prompt).strip()
         
         if response_text.startswith("```json"):
             response_text = re.sub(r"^```json\s*", "", response_text)

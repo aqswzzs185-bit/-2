@@ -1,11 +1,10 @@
 import os
-os.environ["API_VERSION"] = "v1"
 import json
 import urllib.request
 import urllib.parse
 import re
 import random
-import google.generativeai as genai
+from generator import call_gemini_rest_api
 
 def get_stable_hash(s):
     """파이썬 프로세스 재실행 및 세션 리런 시에도 언제나 동일한 정수 해시값을 보장합니다."""
@@ -126,10 +125,7 @@ def expand_keyword_matrix(base_keyword, api_key):
         return {"expanded_keywords": fallback_results}
 
     # 4. AI(Gemini) 지능형 롱테일 매칭
-    import os
-    os.environ["API_VERSION"] = "v1"
-    genai.configure(api_key=api_key)
-    model = genai.GenerativeModel('models/gemini-1.5-flash')
+    # 4. AI(Gemini) 지능형 롱테일 매칭
 
     
     prompt = f"""
@@ -164,8 +160,7 @@ def expand_keyword_matrix(base_keyword, api_key):
     """
     
     try:
-        response = model.generate_content(prompt)
-        raw_text = response.text.strip()
+        raw_text = call_gemini_rest_api(api_key, prompt).strip()
         raw_text = re.sub(r"^```json\s*", "", raw_text, flags=re.IGNORECASE)
         raw_text = re.sub(r"\s*```$", "", raw_text)
         
