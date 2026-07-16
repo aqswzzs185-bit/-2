@@ -1,0 +1,446 @@
+{
+  "부모님 선물 키워드": [
+    {
+      "keyword": "부모님 선물",
+      "category": "부모님 선물 키워드",
+      "related_product": "종합 건강 안심 상품군 (마사지기, 찜질기 등)",
+      "expected_post_type": "부모님 선물 추천형",
+      "shocker_link_possibility": "높음",
+      "is_seasonal": false,
+      "empathy_point": "나이가 드시며 노화로 인해 몸 곳곳의 불편함을 호소하시는 부모님께 자녀가 평소 말하지 못했던 고마움과 사랑을 실용성 있는 선물로 보답하고 싶어함"
+    },
+    {
+      "keyword": "부모님 생신선물",
+      "category": "부모님 선물 키워드",
+      "related_product": "무릎 관절 마사지기, 안마쿠션",
+      "expected_post_type": "부모님 선물 추천형",
+      "shocker_link_possibility": "높음",
+      "is_seasonal": false,
+      "empathy_point": "매년 돌아오는 생신에 매번 뻔한 용돈만 드리기보다, 부모님의 건강과 쑤시는 몸을 실질적으로 케어해주는 특별하고 오래 쓰는 실물 선물을 드리고자 함"
+    },
+    {
+      "keyword": "부모님 명절선물",
+      "category": "부모님 선물 키워드",
+      "related_product": "발마사지기, 프리미엄 족욕기, 건강 식품",
+      "expected_post_type": "부모님 선물 추천형",
+      "shocker_link_possibility": "높음",
+      "is_seasonal": true,
+      "empathy_point": "오랜만에 온 가족이 모이는 추석, 설날 명절에 자식들이 직장에 다니며 번 돈으로 부모님의 누적된 만성 피로를 시원하게 풀어드리는 든든한 효도 선물"
+    },
+    {
+      "keyword": "60대 어머니 선물",
+      "category": "부모님 선물 키워드",
+      "related_product": "손목보호대, 무릎보호대, 저주파 마사지기",
+      "expected_post_type": "부모님 선물 추천형",
+      "shocker_link_possibility": "높음",
+      "is_seasonal": false,
+      "empathy_point": "갱년기가 지나고 가사 노동이나 취미 활동 등으로 손목과 무릎 시림을 느끼기 시작하는 어머니의 일상 통증을 자극 없이 가볍게 예방하고 덜어드림"
+    },
+    {
+      "keyword": "70대 어머니 선물",
+      "category": "부모님 선물 키워드",
+      "related_product": "초경량 보행 보조기, 돋보기 안경 확대경, 안마쿠션",
+      "expected_post_type": "부모님 선물 추천형",
+      "shocker_link_possibility": "높음",
+      "is_seasonal": false,
+      "empathy_point": "근력이 급격히 감소하고 눈이 침침해져 외출이나 독서 등 일상 생활 반경이 좁아지는 70대 어머니에게 실버 안심 기술로 안전함과 자신감을 되찾아드림"
+    },
+    {
+      "keyword": "60대 아버지 선물",
+      "category": "부모님 선물 키워드",
+      "related_product": "종아리 발마사지기, 프리미엄 보온병, 스마트 체성분계",
+      "expected_post_type": "부모님 선물 추천형",
+      "shocker_link_possibility": "높음",
+      "is_seasonal": false,
+      "empathy_point": "은퇴 전후로 야외 취미 활동이나 건강 관리에 관심이 많아지는 아버지를 위해 일상 피로를 시원하게 풀고 활력을 지킬 수 있는 든든한 운동/생활 지원용품"
+    },
+    {
+      "keyword": "70대 아버지 선물",
+      "category": "부모님 선물 키워드",
+      "related_product": "낙상 예방 지팡이, 자동 전자 혈압계, 저주파 안마기",
+      "expected_post_type": "부모님 선물 추천형",
+      "shocker_link_possibility": "높음",
+      "is_seasonal": false,
+      "empathy_point": "걸음걸이가 다소 불안정해지거나 혈압 관리 등 매일 정밀한 만성 건강 관리가 필수적인 70대 아버지의 안전하고 편안한 실내외 생활환경 보장"
+    },
+    {
+      "keyword": "부모님 실용 선물",
+      "category": "부모님 선물 키워드",
+      "related_product": "온열찜질기, 안마쿠션, 주방 안전 가스 타이머",
+      "expected_post_type": "부모님 선물 추천형",
+      "shocker_link_possibility": "높음",
+      "is_seasonal": false,
+      "empathy_point": "비싸고 화려하지만 창고에 모셔두는 예쁜 쓰레기 대신, 부모님이 매일 거실과 안방에서 직접 사용하며 자녀의 세심한 배려를 매 순간 느낄 수 있는 실속형 선물"
+    },
+    {
+      "keyword": "어머니 생신선물",
+      "category": "부모님 선물 키워드",
+      "related_product": "저주파 안마 패치, 갱년기 온열 찜질 벨트",
+      "expected_post_type": "부모님 선물 추천형",
+      "shocker_link_possibility": "높음",
+      "is_seasonal": false,
+      "empathy_point": "나이가 드시며 뼈와 관절이 시리고 가사 일로 뭉친 어머니의 허리, 어깨, 무릎 통증을 집에서 따뜻하게 케어하고 다독이는 효도 선물"
+    },
+    {
+      "keyword": "아버지 생신선물",
+      "category": "부모님 선물 키워드",
+      "related_product": "고급 온열 발마사지기, 휴대용 확대경",
+      "expected_post_type": "부모님 선물 추천형",
+      "shocker_link_possibility": "높음",
+      "is_seasonal": false,
+      "empathy_point": "항상 자식 걱정뿐이시라 본인을 위한 물건은 전혀 사지 않으시는 아버지를 위해, 뭉친 다리 근육과 둔해진 감각을 시원하게 자극해 주는 기특한 가전 선물"
+    }
+  ],
+  "혼자 사는 부모님 키워드": [
+    {
+      "keyword": "혼자 사는 부모님",
+      "category": "혼자 사는 부모님 키워드",
+      "related_product": "현관 안심 동작 감지 센서등, 스마트 가스 차단기",
+      "expected_post_type": "시니어 생활문제 해결형",
+      "shocker_link_possibility": "높음",
+      "is_seasonal": false,
+      "empathy_point": "따로 멀리 떨어져 지내는 직장인 자녀가 항상 부모님의 고독감과 갑작스러운 응급 사고를 늘 불안해하며 안심할 수 있는 환경을 만들고 싶어함"
+    },
+    {
+      "keyword": "혼자 사는 어머니",
+      "category": "혼자 사는 부모님 키워드",
+      "related_product": "욕실 안전 손잡이, 침대 안전바",
+      "expected_post_type": "시니어 생활문제 해결형",
+      "shocker_link_possibility": "높음",
+      "is_seasonal": false,
+      "empathy_point": "전등 교체나 욕실 미끄러짐 등 집안의 자잘한 관리나 긴급한 대처를 혼자 하셔야 하는 어머니의 가사 안전과 낙상 방지를 밀착 수호"
+    },
+    {
+      "keyword": "혼자 사는 아버지",
+      "category": "혼자 사는 부모님 키워드",
+      "related_product": "간편 전자식 혈압계, 주방 타이머 차단기, 영양 가이드",
+      "expected_post_type": "시니어 생활문제 해결형",
+      "shocker_link_possibility": "높음",
+      "is_seasonal": false,
+      "empathy_point": "평소 살갑게 건강 관리를 하지 못하고 약 챙겨 먹기 등을 번거로워하시는 혼자 사는 아버지의 규칙적인 생활과 비상 상황 감지를 원격으로 돕는 효과"
+    },
+    {
+      "keyword": "부모님 안심용품",
+      "category": "혼자 사는 부모님 키워드",
+      "related_product": "비상 응급 알림 단추, 야간 센서 발등등",
+      "expected_post_type": "시니어 생활문제 해결형",
+      "shocker_link_possibility": "높음",
+      "is_seasonal": false,
+      "empathy_point": "갑작스러운 사고 발생 시 즉각 자녀에게 SOS 문자를 주거나 불이 꺼진 어두운 밤길 복도 이동 시 낙상하지 않도록 보호막을 쳐 드리는 든든한 보험"
+    },
+    {
+      "keyword": "독거노인 생활용품",
+      "category": "혼자 사는 부모님 키워드",
+      "related_product": "안전 지팡이, 미끄럼 방지 양말, 확대경 독서등",
+      "expected_post_type": "시니어 생활문제 해결형",
+      "shocker_link_possibility": "중간",
+      "is_seasonal": false,
+      "empathy_point": "거동과 신체 기능이 저하되어 가사 노동이나 외출 시 이웃의 도움 없이는 불안해하시는 고령 부모님의 자립적이고 활력 있는 노년기 자율 생활 지원"
+    },
+    {
+      "keyword": "부모님 집 안전용품",
+      "category": "혼자 사는 부모님 키워드",
+      "related_product": "모서리 충격방지 보호대, 현관 스마트 도어락 문열림 센서",
+      "expected_post_type": "시니어 생활문제 해결형",
+      "shocker_link_possibility": "높음",
+      "is_seasonal": false,
+      "empathy_point": "어두워진 시야와 둔해진 신경 때문에 가구 모서리에 부딪히거나 문이 제대로 안 닫히는 보안 취약점을 방지하여 심리적 평온함을 지켜줌"
+    },
+    {
+      "keyword": "부모님 안전용품",
+      "category": "혼자 사는 부모님 키워드",
+      "related_product": "전열기구 자동 전원 차단 콘센트, 낙상 경보기",
+      "expected_post_type": "시니어 생활문제 해결형",
+      "shocker_link_possibility": "높음",
+      "is_seasonal": false,
+      "empathy_point": "건망증으로 깜빡하기 쉬운 전기 매트 전원 차단 등을 기계가 대신 제어하여 부모님 혼자 계실 때도 화재나 유독 사고 우려를 원천 봉쇄함"
+    },
+    {
+      "keyword": "시니어 안심용품",
+      "category": "혼자 사는 부모님 키워드",
+      "related_product": "미끄럼 방지 매트, 스마트 알약 보관함",
+      "expected_post_type": "시니어 생활문제 해결형",
+      "shocker_link_possibility": "높음",
+      "is_seasonal": false,
+      "empathy_point": "매일 꼭 챙겨 드셔야 하는 만성 질환용 처방약을 잊지 않고 시간에 맞춰 드실 수 있게 돕는 세심한 지능형 도우미 기능"
+    }
+  ],
+  "욕실 안전 키워드": [
+    {
+      "keyword": "욕실 미끄럼 방지",
+      "category": "욕실 안전 키워드",
+      "related_product": "욕실 미끄럼 방지 매트, 안심 논슬립 스프레이",
+      "expected_post_type": "시니어 생활문제 해결형",
+      "shocker_link_possibility": "높음",
+      "is_seasonal": false,
+      "empathy_point": "젊은이와 달리 뼈가 약해진 어르신들에게 가벼운 욕실 미끄러짐도 평생의 뼈 건강과 거동을 해치는 치명적인 낙상 골절 사고로 이어지므로 이를 철저히 차단"
+    },
+    {
+      "keyword": "욕실 미끄럼 방지 매트",
+      "category": "욕실 안전 키워드",
+      "related_product": "논슬립 욕실 미끄럼 방지 매트 (TPE/PVC 안심 소재)",
+      "expected_post_type": "시니어 생활문제 해결형",
+      "shocker_link_possibility": "높음",
+      "is_seasonal": false,
+      "empathy_point": "물기가 늘 흥건하고 비눗물로 위험한 욕실 바닥 전체를 고정식 빨판 매트로 덮어두어, 부모님이 목욕하실 때 발바닥이 단단하게 접지되도록 안도감 제공"
+    },
+    {
+      "keyword": "욕실 손잡이",
+      "category": "욕실 안전 키워드",
+      "related_product": "벽면 부착형 강력 흡착/나사 고정 안전 손잡이",
+      "expected_post_type": "시니어 생활문제 해결형",
+      "shocker_link_possibility": "높음",
+      "is_seasonal": false,
+      "empathy_point": "앉았다가 일어나거나 변기/샤워실 이동 시 다리 힘만으로는 중심을 잡기 어려운 부모님이 몸의 체중을 안전하게 지탱하며 의지할 수 있는 버팀목"
+    },
+    {
+      "keyword": "샤워 의자",
+      "category": "욕실 안전 키워드",
+      "related_product": "시니어 샤워 안전 체어 (물빠짐 홀 및 미끄럼방지 다리 고무 탑재)",
+      "expected_post_type": "시니어 생활문제 해결형",
+      "shocker_link_possibility": "높음",
+      "is_seasonal": false,
+      "empathy_point": "샤워 중 좁은 욕실 안에서 장시간 서 계실 때 발생할 수 있는 부모님의 빈혈, 어지럼증, 다리 피로를 방지하기 위해 앉아서 안전하고 편하게 씻을 수 있는 도구"
+    },
+    {
+      "keyword": "변기 안전손잡이",
+      "category": "욕실 안전 키워드",
+      "related_product": "양변기 좌우 탈부착 프레임 안전 지지대",
+      "expected_post_type": "시니어 생활문제 해결형",
+      "shocker_link_possibility": "높음",
+      "is_seasonal": false,
+      "empathy_point": "관절염과 퇴행성 연골 손상으로 인해 쪼그려 앉거나 낮은 변기 시트에서 일어날 때 무릎에 걸리는 하중을 상체로 분산시켜 통증과 미끄러짐 완화"
+    },
+    {
+      "keyword": "고령자 욕실 안전",
+      "category": "욕실 안전 키워드",
+      "related_product": "욕실 턱 제거 간이 경사판, 안심 비누 홀더",
+      "expected_post_type": "시니어 생활문제 해결형",
+      "shocker_link_possibility": "중간",
+      "is_seasonal": false,
+      "empathy_point": "노년기 사고사 원인 1위인 가정 내 낙상의 대부분이 발생하는 '욕실' 공간을 발을 디디는 첫 순간부터 목욕 후 나오는 순간까지 토탈 안전 Zone으로 개조"
+    },
+    {
+      "keyword": "부모님 욕실 안전용품",
+      "category": "욕실 안전 키워드",
+      "related_product": "욕실 안전 손잡이, 샤워 의자, 미끄럼 방지 매트",
+      "expected_post_type": "시니어 생활문제 해결형",
+      "shocker_link_possibility": "높음",
+      "is_seasonal": false,
+      "empathy_point": "소 잃고 외양간 고치기 전에 부모님이 건강하게 걷고 움직이실 때 안전용품 3총사를 미리 세팅하여 큰 부상 우려를 미연에 원천 예방하는 스마트한 효도 방식"
+    }
+  ],
+  "침실 안전 키워드": [
+    {
+      "keyword": "침대 안전바",
+      "category": "침실 안전 키워드",
+      "related_product": "매트리스 고정형 접이식 침실 안전 가드",
+      "expected_post_type": "시니어 생활문제 해결형",
+      "shocker_link_possibility": "높음",
+      "is_seasonal": false,
+      "empathy_point": "잠결에 뒤척이다가 높은 침대 아래로 떨어지는 낙상 사고를 방지하고, 아침에 일어나실 때 무거운 허리를 짚고 지탱하여 짚고 일어나는 손잡이 역할 겸비"
+    },
+    {
+      "keyword": "침실 센서등",
+      "category": "침실 안전 키워드",
+      "related_product": "무선 충전식 모션 인식 침대 밑 센서 간접등",
+      "expected_post_type": "시니어 생활문제 해결형",
+      "shocker_link_possibility": "높음",
+      "is_seasonal": false,
+      "empathy_point": "야간에 주무시다가 화장실을 가실 때, 불이 꺼진 캄캄한 방안에서 스위치를 더듬다가 발을 헛디디는 사고를 원천 방지하여 은은하게 발목 주변을 밝혀줌"
+    },
+    {
+      "keyword": "수면등",
+      "category": "침실 안전 키워드",
+      "related_product": "시력보호 눈부심 없는 LED 타이머 수면등",
+      "expected_post_type": "시니어 생활문제 해결형",
+      "shocker_link_possibility": "높음",
+      "is_seasonal": false,
+      "empathy_point": "어둠에 대한 불안감과 노인성 불면증으로 깊은 잠에 들지 못하는 부모님께, 망막을 자극하지 않고 편안한 수면 멜라토닌 분비를 돕는 포근하고 따뜻한 유도등"
+    },
+    {
+      "keyword": "부모님 침실용품",
+      "category": "침실 안전 키워드",
+      "related_product": "기능성 시니어 베개, 경추 보호 매트리스 토퍼",
+      "expected_post_type": "시니어 생활문제 해결형",
+      "shocker_link_possibility": "높음",
+      "is_seasonal": false,
+      "empathy_point": "자고 일어나서 목이 뻐근하거나 허리가 늘 찌뿌둥하시다는 부모님의 나쁜 수면 자세와 경추 골격 변형을 바르게 정렬하여 편안한 꿀잠을 지켜드림"
+    },
+    {
+      "keyword": "시니어 침실용품",
+      "category": "침실 안전 키워드",
+      "related_product": "낙상 예방 침대 낙상 방지 보조 손잡이, 야간 모션 발밑등",
+      "expected_post_type": "시니어 생활문제 해결형",
+      "shocker_link_possibility": "높음",
+      "is_seasonal": false,
+      "empathy_point": "거동이 많이 느려지시거나 무릎이 시려 아침 기상 시 한참 동안 몸을 못 움직이시는 시니어 부모님의 안전하고 유연한 안방 생활권 보장"
+    },
+    {
+      "keyword": "밤에 화장실 센서등",
+      "category": "침실 안전 키워드",
+      "related_product": "복도 벽면 부착형 충전식 동작 감지 센서등",
+      "expected_post_type": "시니어 생활문제 해결형",
+      "shocker_link_possibility": "높음",
+      "is_seasonal": false,
+      "empathy_point": "새벽에 자주 깨어 소변을 보러 가시는 노인성 빈뇨 증상이 있는 부모님이 침실에서 화장실 문앞까지 안심하고 걸어가실 수 있게 한걸음 한걸음 모션 감지"
+    },
+    {
+      "keyword": "낙상 예방 센서등",
+      "category": "침실 안전 키워드",
+      "related_product": "동작 감지 센서 LED 발등등 3개 세트",
+      "expected_post_type": "시니어 생활문제 해결형",
+      "shocker_link_possibility": "높음",
+      "is_seasonal": false,
+      "empathy_point": "스마트 모션 감지 칩셋을 사용하여 부모님의 실내 움직임에 반응해 저절로 눈부심 없는 LED 조명이 켜지므로 켜는 스위치를 직접 누르는 동작의 수고를 덜어줌"
+    }
+  ],
+  "건강관리 생활용품 키워드": [
+    {
+      "keyword": "혈압계",
+      "category": "건강관리 생활용품 키워드",
+      "related_product": "가정용 자동 전자식 혈압계 (대화면 및 오차가 적은 안심 밴드 커프)",
+      "expected_post_type": "건강관리 생활용품형",
+      "shocker_link_possibility": "높음",
+      "is_seasonal": false,
+      "empathy_point": "뇌혈관이나 심혈관 질환 관리를 위해 매일 아침저녁으로 집에서 편리하게 재야 하는 시니어의 혈압 추세를 눈이 흐린 노안 맞춤 대형 모니터로 쉽게 판독"
+    },
+    {
+      "keyword": "온열찜질기",
+      "category": "건강관리 생활용품 키워드",
+      "related_product": "황토 허리 어깨 온열 찜질기 (타이머 및 온도 안전 차단 시스템)",
+      "expected_post_type": "건강관리 생활용품형",
+      "shocker_link_possibility": "높음",
+      "is_seasonal": true,
+      "empathy_point": "가을철, 겨울철 찬바람이 불면 허리가 뻐근하고 무릎이 심하게 찌릿하시는 부모님 관절의 혈액 순환을 활발히 돕고 만성 염증성 뻐근함을 열로 다스림"
+    },
+    {
+      "keyword": "발마사지기",
+      "category": "건강관리 생활용품 키워드",
+      "related_product": "다리 공기압 지압 발마사지기 (온열 모드 내장형)",
+      "expected_post_type": "건강관리 생활용품형",
+      "shocker_link_possibility": "높음",
+      "is_seasonal": false,
+      "empathy_point": "하체 순환이 둔해져 저녁만 되면 발바닥과 종아리가 퉁퉁 쥐가 자주 나 고통스러워하시는 부모님의 발끝 모세혈관을 지압 돌기와 공기압으로 꾹꾹 마사지"
+    },
+    {
+      "keyword": "안마쿠션",
+      "category": "건강관리 생활용품 키워드",
+      "related_product": "목 어깨 다용도 마사지 안마쿠션",
+      "expected_post_type": "건강관리 생활용품형",
+      "shocker_link_possibility": "높음",
+      "is_seasonal": false,
+      "empathy_point": "거대한 몇 백만 원짜리 안마의자는 방만 차지하고 조작이 너무 무서워 거부하시는 시니어 부모님이 소파나 침대에 누워 원하는 부위만 가볍게 안마받기 좋음"
+    },
+    {
+      "keyword": "무릎보호대",
+      "category": "건강관리 생활용품 키워드",
+      "related_product": "실리콘 지지대 내장형 관절 안심 무릎 보호대",
+      "expected_post_type": "건강관리 생활용품형",
+      "shocker_link_possibility": "높음",
+      "is_seasonal": false,
+      "empathy_point": "계단을 내려갈 때 무릎 뼈가 시리거나 등산, 텃밭 가꾸기 등 굽히는 가사 생활 시 하중을 단단하게 움켜쥐어 연골과 무릎 골격의 무리를 반으로 절감"
+    },
+    {
+      "keyword": "손목보호대",
+      "category": "건강관리 생활용품 키워드",
+      "related_product": "통기성 우수한 메쉬 엄지 지지 손목 보호 밴드",
+      "expected_post_type": "건강관리 생활용품형",
+      "shocker_link_possibility": "높음",
+      "is_seasonal": false,
+      "empathy_point": "손주 육아나 집안 청소, 칼질 등으로 행주를 짤 때 손목 터널 증후군 및 건초염 통증이 있는 어머니의 손목 관절 움직임을 쾌적하게 고정 지지"
+    },
+    {
+      "keyword": "저주파 마사지기",
+      "category": "건강관리 생활용품 키워드",
+      "related_product": "충전식 미니 EMS 저주파 자극 안마기 패드",
+      "expected_post_type": "건강관리 생활용품형",
+      "shocker_link_possibility": "높음",
+      "is_seasonal": false,
+      "empathy_point": "어깨 결림, 허리 담, 목 뻐근함이 잦으신 어르신들이 물리치료실에 번거롭게 매번 내원하지 않고, 거실 안락의자에 편히 앉아 자극 펄스로 근육 침투 케어"
+    },
+    {
+      "keyword": "확대경",
+      "category": "건강관리 생활용품 키워드",
+      "related_product": "LED 독서 확대경 (스탠드 겸용)",
+      "expected_post_type": "건강관리 생활용품형",
+      "shocker_link_possibility": "높음",
+      "is_seasonal": false,
+      "empathy_point": "노안 백내장 초기 등으로 약통의 작은 글자 성분 표시나 스마트폰 잔글씨가 도통 안 보여 답답하고 주눅 드는 부모님께 크고 밝은 확대 시야를 제공"
+    },
+    {
+      "keyword": "보온병",
+      "category": "건강관리 생활용품 키워드",
+      "related_product": "진공 스테인리스 원터치 시니어 안심 보온 보냉병",
+      "expected_post_type": "건강관리 생활용품형",
+      "shocker_link_possibility": "높음",
+      "is_seasonal": true,
+      "empathy_point": "기침과 기관지 건조가 잦은 부모님이 야외 공원 산책이나 복지관 이동 시 가볍게 들고 다니며 따뜻한 둥굴레차나 미온수를 언제든 홀짝여 목을 축이게 함"
+    }
+  ],
+  "계절 키워드": [
+    {
+      "keyword": "겨울 부모님 선물",
+      "category": "계절 키워드",
+      "related_product": "극세사 탄소 온열찜질기, 시니어 방한 워킹화",
+      "expected_post_type": "부모님 선물 추천형",
+      "shocker_link_possibility": "높음",
+      "is_seasonal": true,
+      "empathy_point": "노령층일수록 기초 대사량이 감소해 겨울 추위에 극도로 취약하고 관절이 딱딱하게 굳기 때문에 부모님이 혹한기 외출이나 집안 수면 시 온기를 유지토록 보조"
+    },
+    {
+      "keyword": "여름 부모님 선물",
+      "category": "계절 키워드",
+      "related_product": "목에 거는 넥밴드 무풍 선풍기, 풍기인견 쿨베개",
+      "expected_post_type": "부모님 선물 추천형",
+      "shocker_link_possibility": "높음",
+      "is_seasonal": true,
+      "empathy_point": "온열 질환(열사병, 탈수)으로 노인성 여름 응급실 이송 비중이 높은 무더운 한여름철에 전기세가 아깝다며 에어컨을 끄고 계시는 고집쟁이 부모님의 쾌적성 사수"
+    },
+    {
+      "keyword": "장마철 부모님 생활용품",
+      "category": "계절 키워드",
+      "related_product": "욕실 미끄럼 방지 매트, 스마트 방수 센서등",
+      "expected_post_type": "시니어 생활문제 해결형",
+      "shocker_link_possibility": "높음",
+      "is_seasonal": true,
+      "empathy_point": "습도가 80%를 초과하여 거실과 욕실 바닥에 물기가 어려 미끄러운 눅눅한 장마 시즌에, 관절염 시림 통증 방지 및 발걸음 안전에 특화된 실버 방지 용품들"
+    },
+    {
+      "keyword": "겨울 온열용품",
+      "category": "계절 키워드",
+      "related_product": "허리 지지 기능성 황토 온열 벨트",
+      "expected_post_type": "건강관리 생활용품형",
+      "shocker_link_possibility": "높음",
+      "is_seasonal": true,
+      "empathy_point": "집안 실내 보일러를 약하게 틀어두어 손발이 꽁꽁 얼고 혈액순환 저하로 쥐가 자주 내리는 부모님이 허리에 착용하여 단시간에 전신 온도를 올리도록 유도"
+    },
+    {
+      "keyword": "여름 냉감용품",
+      "category": "계절 키워드",
+      "related_product": "듀라론 쿨 냉감 매트리스 패드, 아이스 겔 방석",
+      "expected_post_type": "건강관리 생활용품형",
+      "shocker_link_possibility": "높음",
+      "is_seasonal": true,
+      "empathy_point": "열대야로 인해 밤새 식은땀을 흘리고 잠을 설치시는 체온 조절 능력이 저하된 부모님의 누운 자리를 급속 쿨링하여 쾌적한 통기 잠자리 세팅"
+    },
+    {
+      "keyword": "부모님 보온용품",
+      "category": "계절 키워드",
+      "related_product": "스탠리 보온보냉 텀블러, 시니어 수면 덧신",
+      "expected_post_type": "건강관리 생활용품형",
+      "shocker_link_possibility": "높음",
+      "is_seasonal": true,
+      "empathy_point": "방바닥 냉기 때문에 양말을 신어도 발끝이 시려 시리다는 부모님이 집안에서 가볍고 안전하게 신고 걸으실 수 있는 논슬립 패드 장착 방한 덧신"
+    },
+    {
+      "keyword": "시니어 겨울용품",
+      "category": "계절 키워드",
+      "related_product": "빙판길 안심 실버 아이젠, 방한 무릎 담요 숄",
+      "expected_post_type": "건강관리 생활용품형",
+      "shocker_link_possibility": "높음",
+      "is_seasonal": true,
+      "empathy_point": "눈이 온 뒤 얼어붙은 한겨울 골목길을 산책하거나 병원 처방전을 받으러 외출하실 때 미끄러져 평생을 눕게 되실 지 모르는 불상사를 예방하는 필수 외출용품"
+    }
+  ]
+}
