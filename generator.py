@@ -178,21 +178,21 @@ def generate_blog_post(
   "conclusion": "부모님이 매일을 건강하고 안전하게 지내기를 기원하는 자녀의 소망 어린 정감 가득한 맺음말.",
   "hashtags": ["메인키워드", "연관태그2", "태그3", "태그4", "태그5", "태그6", "태그7", "태그8", "태그9", "태그10"],
   "image_prompts": [
-    {
+    {{
       "prompt": "Detailed English image generation prompt for a natural photograph. Must portray a 60-80yo Korean/East Asian senior in a warm domestic scene (like using a product naturally in bedroom/bathroom/living room/kitchen). Soft natural lighting, camera angle, realistic product integration, no text, no logo, no watermark.",
       "filename": "english_lowercase_filename_01.jpg",
       "alt_text": "한국 시니어가 따뜻한 공간에서 상품을 자연스럽게 사용/선물받는 장면을 사실적으로 한글 서술"
-    },
-    {
+    }},
+    {{
       "prompt": "Second English image generation prompt...",
       "filename": "english_lowercase_filename_02.jpg",
       "alt_text": "..."
-    },
-    {
+    }},
+    {{
       "prompt": "Third English image generation prompt...",
       "filename": "english_lowercase_filename_03.jpg",
       "alt_text": "..."
-    }
+    }}
   ]
 }}
 """
