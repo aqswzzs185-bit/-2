@@ -180,6 +180,11 @@ if st.session_state.get("injected_keyword"):
 if st.session_state.get("injected_product"):
     products_display_val = st.session_state.injected_product
     selected_product_val = "직접 입력"
+if st.session_state.get("injected_title"):
+    injected_title_val = st.session_state.injected_title
+else:
+    injected_title_val = ""
+
 
 
 with col_grp1:
@@ -199,6 +204,10 @@ with col_grp1:
         st.session_state.similarity_report = None
         st.session_state.dup_warning_data = None
         st.session_state.angle_suggestions = []
+        st.session_state.injected_keyword = None
+        st.session_state.injected_product = None
+        st.session_state.injected_title = None
+
         st.session_state.show_manual_panel = False
         st.session_state.current_post_id = None
         st.session_state.current_post_status = "초안 생성 완료"
@@ -265,11 +274,14 @@ with col_grp1:
                     tags_list = result.get("hashtags", [])
                     st.session_state.edit_tags = ", ".join(tags_list)
                     candidates = result.get("title_candidates", [])
-                    selected_title = result.get("selected_title", "")
+                    selected_title = st.session_state.get("injected_title") if st.session_state.get("injected_title") else result.get("selected_title", "")
                     flat_candidates = [item.get("title", "") if isinstance(item, dict) else item for item in candidates]
-                    default_idx = flat_candidates.index(selected_title) if selected_title in flat_candidates else 0
+                    if selected_title not in flat_candidates:
+                        flat_candidates.insert(0, selected_title)
+                    default_idx = flat_candidates.index(selected_title)
                     st.session_state.chosen_title_index = default_idx
                     st.session_state.edit_title = selected_title
+
                     sim_rep = similarity_checker.check_generated_content_similarity(history_list, selected_title, st.session_state.edit_content, tags_list)
                     st.session_state.similarity_report = sim_rep
                     new_post_id = f"post_{int(time.time())}"
@@ -863,6 +875,9 @@ with tab_trend:
 
 
 with tab_write:
+    if st.session_state.get("injected_title"):
+        st.success(f"🎯 **오늘의 추천 주제로부터 다음 기획 조건이 자동으로 주입되었습니다!**  \n- **선택된 제목**: `{st.session_state.injected_title}`  \n- **메인 키워드**: `{st.session_state.injected_keyword}`  \n- **소개할 상품**: `{st.session_state.injected_product}`")
+        
     # 💡 11차 고도화: 생성 전 중복 작성 경고 및 새로운 각도 제안 패널 렌더링
     if st.session_state.dup_warning_data:
         dw = st.session_state.dup_warning_data
