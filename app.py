@@ -142,11 +142,13 @@ if st.sidebar.button("🔍 API Key 작동 진단 테스트", use_container_width
         st.sidebar.error("진단할 API Key를 먼저 입력해 주세요.")
     else:
         with st.sidebar.spinner("구글 서버에 연결 진단 중..."):
+            cleaned_key = gemini_key.strip()
+            masked_key = f"{cleaned_key[:5]}...{cleaned_key[-4:]}" if len(cleaned_key) > 10 else "Invalid Key"
             try:
-                test_response = generator.call_gemini_rest_api(gemini_key.strip(), "Hello, respond with 'OK'")
-                st.sidebar.success(f"🟢 연결 성공! 구글 응답: {test_response.strip()}")
+                test_response = generator.call_gemini_rest_api(cleaned_key, "Hello, respond with 'OK'")
+                st.sidebar.success(f"🟢 연결 성공!\n(진단 대상: {masked_key})\n구글 응답: {test_response.strip()}")
             except Exception as ex:
-                st.sidebar.error(f"🔴 연결 실패!\n구글 응답 메시지:\n{str(ex)}")
+                st.sidebar.error(f"🔴 연결 실패!\n(진단 대상: {masked_key})\n구글 응답 메시지:\n{str(ex)}")
 
 
 # 메인 UI
