@@ -5,7 +5,7 @@ import re
 import platform
 import random
 from datetime import datetime
-import google.generativeai as genai
+from generator import call_gemini_rest_api
 
 # 수집 대상 10대 분야 선언
 COLLECTION_CATEGORIES = [
@@ -174,8 +174,7 @@ def collect_trending_topics(api_key):
 
         
     # AI에게 수집된 키워드 풀과 상품 DB 정보를 바탕으로 최종 분석 지시
-    genai.configure(api_key=api_key)
-    model = genai.GenerativeModel('gemini-2.5-flash')
+    # AI에게 수집된 키워드 풀과 상품 DB 정보를 바탕으로 최종 분석 지시
     
     prompt = f"""
     당신은 부모님 안심용품, 시니어 생활용품 블로그의 '트렌드 분석 에이전트'입니다.
@@ -222,8 +221,7 @@ def collect_trending_topics(api_key):
     """
     
     try:
-        response = model.generate_content(prompt)
-        raw_text = response.text.strip()
+        raw_text = call_gemini_rest_api(api_key, prompt, "gemini-1.5-flash").strip()
         # JSON 코드블록 기호 제거 안전 장치
         raw_text = re.sub(r"^```json\s*", "", raw_text, flags=re.IGNORECASE)
         raw_text = re.sub(r"\s*```$", "", raw_text)

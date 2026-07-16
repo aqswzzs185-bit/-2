@@ -1,6 +1,6 @@
-import google.generativeai as genai
 import json
 import re
+from generator import call_gemini_rest_api
 
 # 로컬 스캐닝용 금지/위험 단어 목록
 EXAGGERATION_WORDS = ["무조건", "최고", "완벽", "필수 구매", "효과 보장", "무조건 필요", "절대적", "가장 뛰어난", "100% 효과"]
@@ -49,8 +49,6 @@ def run_content_check(api_key: str, title: str, content: str, tags: list) -> dic
         }
         
     try:
-        genai.configure(api_key=api_key)
-        model = genai.GenerativeModel('gemini-1.5-flash')
         
         full_document = f"제목: {title}\n\n본문:\n{content}\n\n해시태그: {', '.join(tags)}"
         
@@ -91,12 +89,7 @@ def run_content_check(api_key: str, title: str, content: str, tags: list) -> dic
 }}
 """
         
-        response = model.generate_content(
-            prompt,
-            generation_config={"response_mime_type": "application/json"}
-        )
-        
-        response_text = response.text.strip()
+        response_text = call_gemini_rest_api(api_key, prompt).strip()
         
         if response_text.startswith("```json"):
             response_text = re.sub(r"^```json\s*", "", response_text)

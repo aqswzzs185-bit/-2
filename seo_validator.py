@@ -1,6 +1,6 @@
-import google.generativeai as genai
 import json
 import re
+from generator import call_gemini_rest_api
 
 def evaluate_seo_and_readability(
     api_key: str, 
@@ -64,8 +64,6 @@ def evaluate_seo_and_readability(
         }
         
     try:
-        genai.configure(api_key=api_key)
-        model = genai.GenerativeModel('gemini-1.5-flash')
         
         prompt = f"""
 당신은 네이버 블로그 전문 마케팅 기획자이자 포스팅 SEO 검수 엔진입니다.
@@ -105,12 +103,8 @@ def evaluate_seo_and_readability(
   ]
 }}
 """
-        response = model.generate_content(
-            prompt,
-            generation_config={"response_mime_type": "application/json"}
-        )
-        
-        data = json.loads(response.text.strip())
+        response_text = call_gemini_rest_api(api_key, prompt).strip()
+        data = json.loads(response_text)
         
         # 로컬에서 감지된 문제들과 AI가 감지한 문제들을 영리하게 병합하여 신뢰성 증대
         merged_issues = list(set(issues + data.get("issues", [])))
@@ -146,8 +140,6 @@ def auto_fix_content(
         return {"error": "API Key가 유효하지 않아 자동 수정(Auto-Fix)을 수행할 수 없습니다."}
         
     try:
-        genai.configure(api_key=api_key)
-        model = genai.GenerativeModel('gemini-1.5-flash')
         
         prompt = f"""
 당신은 네이버 블로그 검색 노출 마스터이자 교정 편집자입니다.
@@ -180,12 +172,7 @@ def auto_fix_content(
   "fixed_tags": ["교정 완료되어 5~10개 수량에 맞춰 재배열한 태그 목록"]
 }}
 """
-        response = model.generate_content(
-            prompt,
-            generation_config={"response_mime_type": "application/json"}
-        )
-        
-        response_text = response.text.strip()
+        response_text = call_gemini_rest_api(api_key, prompt).strip()
         
         if response_text.startswith("```json"):
             response_text = re.sub(r"^```json\s*", "", response_text)
