@@ -16,7 +16,6 @@ def call_gemini_rest_api(api_key: str, prompt: str, model_name: str = "gemini-1.
     url = f"https://generativelanguage.googleapis.com/v1beta/models/{clean_model_name}:generateContent?key={encoded_key}"
     headers = {
         "Content-Type": "application/json",
-        "Authorization": f"Bearer {clean_key}",
         "x-goog-api-key": clean_key
     }
     data = {
