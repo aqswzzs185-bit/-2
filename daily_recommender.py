@@ -26,12 +26,12 @@ def get_today_recommendations():
         total_score = item.get("total_score", 90.0)
         
         # 3. 각 주제마다 노출이 잘 되는 글 제목 후보 5개 빌드
-        # 연령대/타겟/상황을 조합해 고부가가치 롱테일 형태로 정밀 작문
+        # 모든 제목 후보에 반드시 메인 키워드(kw)가 포함되도록 최적화 (SEO 강점 확보 및 혼선 방지)
         title_candidates = [
             f"부모님 안전을 지키는 {kw} 선택 기준 및 추천 가이드",
-            f"60대 70대 부모님 실용 선물로 극찬받은 {prod} 솔직 분석",
+            f"60대 70대 부모님 실용 선물 극찬! {kw} ({prod}) 솔직 분석",
             f"혼자 사는 부모님 집 {kw} 설치로 낙상 사고 안심 예방하는 법",
-            f"자녀의 걱정을 덜어주는 효도용 {prod} 고르는 3가지 기준",
+            f"자녀의 걱정을 덜어주는 효도용 {kw} ({prod}) 고르는 3가지 기준",
             f"부모님 깜짝 생신선물! {kw} 추천과 자녀들의 실제 사용 후기"
         ]
         
@@ -39,6 +39,7 @@ def get_today_recommendations():
         if "욕실" in cat or "침실" in cat or "안전" in kw:
             title_candidates[0] = f"부모님 욕실 침실 낙상 예방을 위한 {kw} 안심 가이드"
             title_candidates[4] = f"연로하신 부모님 안전 필수품! {kw} 추천 및 설치 팁"
+
             
         recommendations.append({
             "rank": rank,
