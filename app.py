@@ -982,9 +982,11 @@ with tab_write:
                         with col_alt_btn:
                             if st.button("✍️ 대체", key=f"apply_alt_kw_{a_idx}", use_container_width=True):
                                 st.session_state.injected_keyword = alt
+                                st.session_state.injected_title = f"부모님 안전과 실용을 돕는 {alt} 추천 및 가이드"
                                 st.session_state.comp_analysis_result = None
-                                st.success(f"대체 키워드 '{alt}' 주입 완료!  \n다시 분석하시거나 글 작성을 시작하세요.")
+                                st.success(f"대체 키워드 및 제목 주입 완료! 작성창에서 글을 생성하세요.")
                                 st.rerun()
+
 
         
         # 2. 글 유형 선택
