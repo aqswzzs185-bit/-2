@@ -3,6 +3,7 @@ import json
 import re
 import urllib.request
 import urllib.error
+import urllib.parse
 
 def call_gemini_rest_api(api_key: str, prompt: str, model_name: str = "gemini-1.5-flash") -> str:
     """
@@ -11,7 +12,8 @@ def call_gemini_rest_api(api_key: str, prompt: str, model_name: str = "gemini-1.
     """
     clean_model_name = model_name.replace("models/", "")
     clean_key = api_key.strip() if api_key else ""
-    url = f"https://generativelanguage.googleapis.com/v1beta/models/{clean_model_name}:generateContent?key={clean_key}"
+    encoded_key = urllib.parse.quote(clean_key)
+    url = f"https://generativelanguage.googleapis.com/v1beta/models/{clean_model_name}:generateContent?key={encoded_key}"
     headers = {"Content-Type": "application/json"}
     data = {
         "contents": [
