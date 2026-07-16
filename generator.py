@@ -201,10 +201,7 @@ def generate_blog_post(
 }}
 """
         
-        response = model.generate_content(
-            prompt,
-            generation_config={"response_mime_type": "application/json"}
-        )
+        response = model.generate_content(prompt)
         
         response_text = response.text.strip()
         
@@ -287,10 +284,7 @@ def regenerate_titles(api_key: str, main_keyword: str, content: str, products: s
   "selected_title": "위 5개 제목 후보의 'title' 중 가장 자연스러운 추천 제목 1개 선택 (글자수 25~45자 필수 만족)"
 }}
 """
-        response = model.generate_content(
-            prompt,
-            generation_config={"response_mime_type": "application/json"}
-        )
+        response = model.generate_content(prompt)
         response_text = response.text.strip()
         if response_text.startswith("```json"):
             response_text = re.sub(r"^```json\s*", "", response_text)
@@ -364,10 +358,7 @@ def regenerate_image_prompts(api_key: str, content: str, products: str) -> dict:
   ]
 }}
 """
-        response = model.generate_content(
-            prompt,
-            generation_config={"response_mime_type": "application/json"}
-        )
+        response = model.generate_content(prompt)
         response_text = response.text.strip()
         if response_text.startswith("```json"):
             response_text = re.sub(r"^```json\s*", "", response_text)
