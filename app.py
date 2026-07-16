@@ -125,12 +125,11 @@ gemini_key = st.sidebar.text_input(
     "Google Gemini API Key", 
     value=st.session_state.gemini_api_key, 
     type="password", 
-    key="gemini_api_key_input",
     help="Gemini API 키를 입력해 주세요."
 )
-# 사용자가 입력한 최신 키를 세션 메모리에 즉시 강제 잠금 보존
-st.session_state.gemini_api_key = gemini_key.strip() if gemini_key else ""
-gemini_key = st.session_state.gemini_api_key
+if gemini_key:
+    st.session_state.gemini_api_key = gemini_key.strip()
+    gemini_key = st.session_state.gemini_api_key
 
 naver_id = st.sidebar.text_input("Naver ID", value=cfg.get("NAVER_ID", ""), help="네이버 블로그의 주인 아이디를 입력합니다. (비워둘 시 네이버 메인으로 이동)")
 naver_client_id = st.sidebar.text_input("Naver Client ID (데이터랩)", value=cfg.get("NAVER_CLIENT_ID", ""), type="password", help="네이버 데이터랩 수집용 Client ID")
