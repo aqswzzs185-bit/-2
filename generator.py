@@ -4,12 +4,14 @@ import re
 import urllib.request
 import urllib.error
 
-def call_gemini_rest_api(api_key: str, prompt: str, model_name: str = "gemini-1.5-flash") -> str:
+def call_gemini_rest_api(api_key: str, prompt: str, model_name: str = "gemini-1.5-flash-latest") -> str:
     """
-    google-generativeai SDK의 404 엔드포인트 충돌을 완벽히 방지하기 위해
     구글 공식 Gemini v1 REST API로 직접 POST 요청을 날려 텍스트 결과를 반환합니다.
+    유료 결제 키 사양에 맞춘 정식 v1 엔드포인트를 고수하며, 
+    모델 매칭 404 에러를 정석적으로 해결하기 위해 공식 최신 지시자인 gemini-1.5-flash-latest 에일리어스를 사용합니다.
     """
-    url = f"https://generativelanguage.googleapis.com/v1/models/{model_name}:generateContent?key={api_key}"
+    clean_model_name = model_name.replace("models/", "")
+    url = f"https://generativelanguage.googleapis.com/v1/models/{clean_model_name}:generateContent?key={api_key}"
     headers = {"Content-Type": "application/json"}
     data = {
         "contents": [
