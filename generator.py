@@ -11,7 +11,7 @@ def call_gemini_rest_api(api_key: str, prompt: str, model_name: str = "gemini-1.
     모델 매칭 404 에러를 정석적으로 해결하기 위해 공식 최신 지시자인 gemini-1.5-flash-latest 에일리어스를 사용합니다.
     """
     clean_model_name = model_name.replace("models/", "")
-    url = f"https://generativelanguage.googleapis.com/v1/models/{clean_model_name}:generateContent?key={api_key}"
+    url = f"https://generativelanguage.googleapis.com/v1beta/models/{clean_model_name}:generateContent?key={api_key}"
     headers = {"Content-Type": "application/json"}
     data = {
         "contents": [
