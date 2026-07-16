@@ -1,3 +1,5 @@
+import os
+os.environ["API_VERSION"] = "v1"
 import google.generativeai as genai
 import json
 import re

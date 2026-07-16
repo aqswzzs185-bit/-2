@@ -1,3 +1,5 @@
+import os
+os.environ["API_VERSION"] = "v1"
 import json
 import urllib.request
 import urllib.parse
