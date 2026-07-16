@@ -5,6 +5,11 @@ import re
 import random
 from datetime import datetime, timedelta
 
+def get_stable_hash(s):
+    """파이썬 프로세스 재실행 및 세션 리런 시에도 언제나 동일한 정수 해시값을 보장합니다."""
+    return sum(ord(c) * (i + 1) for i, c in enumerate(s))
+
+
 def load_products_db():
     """products_db.json 파일을 로드합니다."""
     try:
@@ -126,7 +131,8 @@ def analyze_keyword_competition(keyword):
     
     # 크롤링 실패 및 최초 분석일 때 폴백 모의 분석 가동 (자율 구동 보장)
     if not crawled_posts:
-        random.seed(hash(kw))
+        random.seed(get_stable_hash(kw))
+
         crawled_posts = [
             {"title": f"연로하신 부모님 선물 추천 {kw} 베스트", "date": "3일 전", "is_influencer": True},
             {"title": f"직접 사본 60대 부모님 선물 솔직 리뷰", "date": "1주일 전", "is_influencer": True},

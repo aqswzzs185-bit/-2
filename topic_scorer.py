@@ -3,7 +3,12 @@ import os
 import random
 from datetime import datetime
 
+def get_stable_hash(s):
+    """파이썬 프로세스 재실행 및 세션 리런 시에도 언제나 동일한 정수 해시값을 보장합니다."""
+    return sum(ord(c) * (i + 1) for i, c in enumerate(s))
+
 def load_keywords_seed_db():
+
     """keywords_seed_db.json 파일을 로드합니다."""
     try:
         with open("keywords_seed_db.json", "r", encoding="utf-8") as f:
@@ -82,8 +87,9 @@ def calculate_topic_scores():
                 trend_score = 14.0
         else:
             # 트렌드 데이터가 없을 시 기본 16~22점 사이 자동 배정
-            random.seed(hash(kw) + 1)
+            random.seed(get_stable_hash(kw) + 1)
             trend_score = round(random.uniform(16.0, 22.0), 1)
+
             
         # 2. 구매 의도 점수 (25점 만점)
         # 키워드 내 실구매 의도 어휘 판정
