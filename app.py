@@ -179,7 +179,17 @@ if st.session_state.get("injected_keyword"):
     main_keyword_val = st.session_state.injected_keyword
 if st.session_state.get("injected_product"):
     products_display_val = st.session_state.injected_product
-    selected_product_val = "직접 입력"
+    # products_db를 역추적해 대분류 카테고리와 세부 상품군 자동 설정
+    found_cat = None
+    for db_cat, db_prods in products_db.items():
+        if products_display_val in db_prods:
+            found_cat = db_cat
+            break
+    if found_cat:
+        selected_db_cat_val = found_cat
+        selected_product_val = products_display_val
+    else:
+        selected_product_val = "직접 입력"
 if st.session_state.get("injected_title"):
     injected_title_val = st.session_state.injected_title
 else:
@@ -983,9 +993,20 @@ with tab_write:
                             if st.button("✍️ 대체", key=f"apply_alt_kw_{a_idx}", use_container_width=True):
                                 st.session_state.injected_keyword = alt
                                 st.session_state.injected_title = f"부모님 안전과 실용을 돕는 {alt} 추천 및 가이드"
+                                # 💡 25차 고도화: 대체어에 어울리는 최적의 상품 매칭 정보 자동 갱신
+                                try:
+                                    import shocker_matcher
+                                    sh_match = shocker_matcher.get_shocker_matched_products(alt)
+                                    if sh_match["is_valid"] and sh_match["matches"]:
+                                        st.session_state.injected_product = sh_match["matches"][0]["product"]
+                                    else:
+                                        st.session_state.injected_product = "직접 입력"
+                                except Exception:
+                                    st.session_state.injected_product = "직접 입력"
                                 st.session_state.comp_analysis_result = None
-                                st.success(f"대체 키워드 및 제목 주입 완료! 작성창에서 글을 생성하세요.")
+                                st.success(f"대체 키워드, 제목, 상품 주입 완료! 작성창에서 글을 생성하세요.")
                                 st.rerun()
+
 
 
         
@@ -997,17 +1018,20 @@ with tab_write:
         )
         
         # 글 유형에 대응되는 기본 상품 DB 카테고리 매핑 설정
-        default_db_cat_idx = 0
-        if "선물" in post_type:
-            default_db_cat_idx = db_categories.index("부모님 선물") if "부모님 선물" in db_categories else 0
-        elif "안심" in post_type:
-            default_db_cat_idx = db_categories.index("혼자 사는 부모님 안심용품") if "혼자 사는 부모님 안심용품" in db_categories else 0
-        elif "욕실" in post_type or "안전용품" in post_type:
-            default_db_cat_idx = db_categories.index("욕실 안전용품") if "욕실 안전용품" in db_categories else 0
-        elif "건강" in post_type:
-            default_db_cat_idx = db_categories.index("건강관리 생활용품") if "건강관리 생활용품" in db_categories else 0
-        elif "계절" in post_type:
-            default_db_cat_idx = db_categories.index("계절별 생활용품") if "계절별 생활용품" in db_categories else 0
+        if st.session_state.get("injected_product") and selected_db_cat_val in db_categories:
+            default_db_cat_idx = db_categories.index(selected_db_cat_val)
+        else:
+            default_db_cat_idx = 0
+            if "선물" in post_type:
+                default_db_cat_idx = db_categories.index("부모님 선물") if "부모님 선물" in db_categories else 0
+            elif "안심" in post_type:
+                default_db_cat_idx = db_categories.index("혼자 사는 부모님 안심용품") if "혼자 사는 부모님 안심용품" in db_categories else 0
+            elif "욕실" in post_type or "안전용품" in post_type:
+                default_db_cat_idx = db_categories.index("욕실 안전용품") if "욕실 안전용품" in db_categories else 0
+            elif "건강" in post_type:
+                default_db_cat_idx = db_categories.index("건강관리 생활용품") if "건강관리 생활용품" in db_categories else 0
+            elif "계절" in post_type:
+                default_db_cat_idx = db_categories.index("계절별 생활용품") if "계절별 생활용품" in db_categories else 0
             
         st.markdown("##### 📦 상품 카테고리 및 소개할 상품군 선택")
         selected_db_cat = st.selectbox(
@@ -1019,10 +1043,10 @@ with tab_write:
         sub_products = list(products_db.get(selected_db_cat, {}).keys())
         sub_products_options = sub_products + ["직접 입력"]
         
-        saved_prod = last_inputs.get("selected_product", "")
+        target_prod = selected_product_val if selected_product_val else last_inputs.get("selected_product", "")
         default_prod_idx = 0
-        if saved_prod in sub_products_options:
-            default_prod_idx = sub_products_options.index(saved_prod)
+        if target_prod in sub_products_options:
+            default_prod_idx = sub_products_options.index(target_prod)
             
         selected_product = st.selectbox(
             "소개할 세부 상품군", 
