@@ -1,4 +1,28 @@
 import random
+import urllib.parse
+
+def make_ai_image_html(prompt_text: str, alt_text: str = "") -> str:
+    """
+    Pollinations AI API를 호출하여 실시간으로 이미지를 생성하고
+    네이버 블로그 에디터가 완벽하게 호환 복사하는 가운데 정렬 액자형 HTML을 조립합니다.
+    """
+    if not prompt_text or not prompt_text.strip():
+        return ""
+    clean_prompt = prompt_text.strip().replace("\n", " ").replace("\"", "")
+    # 프롬프트를 픽셀아트/만화가 아닌 따뜻한 사진 느낌이 나도록 수식어 가미
+    if "realistic photography" not in clean_prompt.lower():
+        clean_prompt += ", realistic photography, cozy and warm lighting, highly detailed"
+    encoded_prompt = urllib.parse.quote(clean_prompt)
+    img_url = f"https://image.pollinations.ai/prompt/{encoded_prompt}?nologo=true&width=800&height=600"
+    
+    html_str = (
+        f'\n<div style="text-align: center; margin: 25px 0;">\n'
+        f'  <img src="{img_url}" alt="{alt_text}" style="max-width: 100%; border-radius: 12px; box-shadow: 0 6px 16px rgba(0,0,0,0.08); border: 1px solid #eaeaea;"><br>\n'
+        f'  <span style="color: #666; font-size: 13px; display: block; margin-top: 8px; font-weight: 500;">▲ {alt_text}</span>\n'
+        f'</div>\n'
+    )
+    return html_str
+
 
 # 다채로운 링크 자연어 템플릿 정의 (직접 광고 유도 배제, 시니어 정보 가이드에 포커싱)
 LINK_PREFIX_TEMPLATES = [
@@ -45,16 +69,14 @@ def generate_natural_link_paragraph(product_name: str, link_url: str, db_link_te
 def assemble_post_with_links(post_data: dict, links: list, link_count: int, product_name: str, db_link_text: str = "") -> str:
     """
     AI가 작성한 원고 10단계 구성 요소를 조합하되,
-    사용자가 선택한 링크 삽입 횟수(1회 또는 2회) 및 위치 규칙을 엄격하게 지켜
-    최종 하나의 마크다운/텍스트 본문으로 조립합니다.
-    
-    규칙:
-    - 도입부에는 절대 링크를 넣지 않음.
-    - 첫 번째 링크: 본문 중간 (소제목 & 본문 섹션들 중 2~3번째 섹션 직후)에 배치.
-    - 두 번째 링크: 사용자 선택이 2회이고 링크가 2개 입력되었을 때, 마무리(conclusion) 문단 바로 직전에 배치.
-    - 링크 전후로는 빈 줄을 크게 두어 모바일 가독성 확보.
+    사용자가 선택한 링크 삽입 횟수(1회 또는 2회) 및 위치 규칙을 지키고,
+    AI 추천 이미지 프롬프트를 실시간 무제한 이미지 생성 API(Pollinations AI)로 변환해
+    본문 곳곳에 가운데 정렬 액자형으로 100% 자동 삽입하여 조립합니다.
     """
     content_parts = []
+    
+    # AI 이미지 프롬프트 리스트 추출
+    img_prompts = post_data.get("image_prompts", [])
     
     # 1. 도입부 추가 (링크 없음)
     if post_data.get("introduction"):
@@ -76,24 +98,36 @@ def assemble_post_with_links(post_data: dict, links: list, link_count: int, prod
     if len(valid_links) >= 2 and link_count == 2:
         link_para_2 = generate_natural_link_paragraph(product_name, valid_links[1], db_link_text)
         
-    # 본문 중간 삽입 위치 결정 (보통 섹션이 4개 이상이면 2번째 섹션 뒤에 꽂음)
+    # 본문 중간 삽입 위치 결정
     insert_idx = min(2, len(body_sections))
     
     for idx, (sub, body) in enumerate(zip(subtitles, body_sections)):
         content_parts.append(f"■ {sub}\n{body}")
+        
+        # 1번째 섹션 직후에 1번째 AI 실사 이미지 자동 삽입
+        if idx == 0 and len(img_prompts) >= 1:
+            p_val = img_prompts[0]
+            img_html = make_ai_image_html(p_val.get("prompt"), p_val.get("alt_text"))
+            if img_html:
+                content_parts.append(img_html)
         
         # 중간 삽입 조건 충족 시 첫 번째 링크 문단 꽂아넣기
         if idx + 1 == insert_idx and link_para_1:
             content_parts.append(link_para_1)
             
     # 3. 만약 섹션 수가 너무 적어 중간 링크가 누락되었거나 링크 카운트 대비 못 들어간 경우 방지
-    # (예컨대 바디 섹션이 아예 없었을 경우)
     if link_para_1 and link_para_1 not in content_parts:
         content_parts.append(link_para_1)
         
     # 4. 선택 기준 정리 추가
     if post_data.get("selection_criteria"):
         content_parts.append(f"📌 [선택 기준 정리]\n{post_data['selection_criteria']}")
+        # 2번째 AI 실사 이미지 자동 삽입
+        if len(img_prompts) >= 2:
+            p_val = img_prompts[1]
+            img_html = make_ai_image_html(p_val.get("prompt"), p_val.get("alt_text"))
+            if img_html:
+                content_parts.append(img_html)
         
     # 5. 주의사항 추가
     if post_data.get("precautions"):
@@ -106,8 +140,14 @@ def assemble_post_with_links(post_data: dict, links: list, link_count: int, prod
     # 7. 마무리 추가
     if post_data.get("conclusion"):
         content_parts.append(post_data["conclusion"])
+        # 3번째 AI 실사 이미지 자동 삽입
+        if len(img_prompts) >= 3:
+            p_val = img_prompts[2]
+            img_html = make_ai_image_html(p_val.get("prompt"), p_val.get("alt_text"))
+            if img_html:
+                content_parts.append(img_html)
         
-    # 각 파트를 두 줄 개행(\n\n)으로 결합하여 넓은 모바일 가독성 레이아웃 확보
+    # 각 파트를 두 줄 개행(\n\n)으로 결합
     assembled_content = "\n\n".join(content_parts)
     
     return assembled_content
