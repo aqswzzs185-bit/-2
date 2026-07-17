@@ -221,7 +221,7 @@ def collect_trending_topics(api_key):
     """
     
     try:
-        raw_text = call_gemini_rest_api(api_key, prompt, "gemini-1.5-flash").strip()
+        raw_text = call_gemini_rest_api(api_key, prompt, "gemini-2.0-flash").strip()
         # JSON 코드블록 기호 제거 안전 장치
         raw_text = re.sub(r"^```json\s*", "", raw_text, flags=re.IGNORECASE)
         raw_text = re.sub(r"\s*```$", "", raw_text)
