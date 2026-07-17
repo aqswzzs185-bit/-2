@@ -1,0 +1,28 @@
+{
+    "GEMINI_API_KEY": "AIzaSyCfD2M_Zv8xT1Nbt5VvadPennTpt92F5II",
+    "NAVER_ID": "",
+    "CHROME_PROFILE_DIR": "./naver_chrome_profile",
+    "DEFAULT_TONE": "자녀가 부모님의 건강과 안전을 진심으로 걱정하고 배려하는 따뜻하고 정중한 어조",
+    "LAST_INPUTS": {
+        "main_keyword": "늙은 부모님이 장마철을 안전하게 나는 방법",
+        "post_type": "계절별 생활용품형",
+        "targets": [
+            "부모님 공통"
+        ],
+        "situations": [
+            "장마철"
+        ],
+        "selected_db_cat": "계절별 생활용품",
+        "selected_product": "장마철 제습용품",
+        "manual_product": "",
+        "products": "장마철 제습용품",
+        "link_count": 2,
+        "links": [
+            "",
+            ""
+        ],
+        "char_count": "2000자",
+        "tone_style": "자녀가 부모님을 걱정하는 말투",
+        "blog_category": ""
+    }
+}
