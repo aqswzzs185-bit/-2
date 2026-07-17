@@ -187,6 +187,11 @@ def collect_trending_topics(api_key):
     [수행 작업]
     위 입력 데이터를 결합하여 다음 조건에 맞게 최근 블로그 글 주제를 기획하고 분석 결과를 JSON 형식으로만 반환해 주세요.
     
+    [핵심 규칙: 중복 생성 절대 금지]
+    - 1위부터 5위까지의 추천 주제('top_5_recommendations')는 서로 완전히 다른 차별화된 독립적인 제품군 및 키워드를 다루어야 합니다.
+    - 동일하거나 아주 유사한 핵심 주제/제품군(예: 1위와 3위 모두 욕실 미끄럼 방지 관련)이 중복해서 순위권 내에 추천되어서는 절대 안 됩니다.
+    - 반드시 각 순위별로 다루는 메인 상품이나 키워드 카테고리가 다채롭게 분산되도록 기획해 주세요.
+    
     1. 글 주제 후보 20개를 생성합니다. 각 후보는 다음 정보를 담고 있어야 합니다:
        - 'keyword': 글의 타겟 메인 키워드 (예: '70대 욕실 안전매트', '시니어 보행 보조기')
        - 'product': 우리 상품 DB에서 가장 잘 매칭되는 상품명 (직접 입력도 가능)
@@ -221,7 +226,7 @@ def collect_trending_topics(api_key):
     """
     
     try:
-        raw_text = call_gemini_rest_api(api_key, prompt, "gemini-2.0-flash").strip()
+        raw_text = call_gemini_rest_api(api_key, prompt, "gemini-2.5-flash").strip()
         # JSON 코드블록 기호 제거 안전 장치
         raw_text = re.sub(r"^```json\s*", "", raw_text, flags=re.IGNORECASE)
         raw_text = re.sub(r"\s*```$", "", raw_text)
