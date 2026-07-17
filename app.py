@@ -114,6 +114,17 @@ def persist_current_state():
     }
     workspace_state.save_workspace_state(state_to_save)
 
+# 💡 추천 주제 주입 콜백 함수 (루프 변수 스코프 엇박자 오염 방지용)
+def handle_title_injection(keyword, product, title):
+    st.session_state.injected_keyword = keyword
+    st.session_state.injected_product = product
+    st.session_state.injected_title = title
+
+def handle_product_injection(keyword, product):
+    st.session_state.injected_keyword = keyword
+    st.session_state.injected_product = product
+    st.session_state.injected_title = None
+
 # 사이드바 설정 화면
 st.sidebar.markdown("# ⚙️ 환경 설정")
 st.sidebar.markdown("프로그램 동작에 필요한 설정값을 입력하세요.")
