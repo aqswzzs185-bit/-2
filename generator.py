@@ -5,10 +5,10 @@ import urllib.request
 import urllib.error
 import urllib.parse
 
-def call_gemini_rest_api(api_key: str, prompt: str, model_name: str = "gemini-2.0-flash") -> str:
+def call_gemini_rest_api(api_key: str, prompt: str, model_name: str = "gemini-2.5-flash") -> str:
     """
     구글 공식 Gemini REST API로 직접 POST 요청을 날려 텍스트 결과를 반환합니다.
-    v1beta 엔드포인트에서 지원하는 최신 표준 모델 명칭인 gemini-2.0-flash 사양을 사용합니다.
+    v1beta 엔드포인트에서 지원하는 최신 표준 모델 명칭인 gemini-2.5-flash 사양을 사용합니다.
     """
     clean_model_name = model_name.replace("models/", "")
     clean_key = api_key.strip() if api_key else ""
