@@ -1245,6 +1245,10 @@ with tab_write:
                 st.session_state.edit_content = edited_content
                 persist_current_state()
             
+            if st.session_state.edit_content:
+                with st.expander("👀 [시각적 미리보기] 네이버 블로그에 실제로 등록될 이미지와 본문 레이아웃", expanded=True):
+                    st.markdown(st.session_state.edit_content, unsafe_allow_html=True)
+            
             edited_tags = st.text_input("최종 해시태그 (쉼표로 구분)", value=st.session_state.edit_tags)
             if edited_tags != st.session_state.edit_tags:
                 st.session_state.edit_tags = edited_tags
