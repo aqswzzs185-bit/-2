@@ -125,6 +125,7 @@ if "gemini_api_key" not in st.session_state:
 st.sidebar.text_input(
     "Google Gemini API Key", 
     key="gemini_api_key",
+    type="password",
     help="Gemini API 키를 입력해 주세요."
 )
 gemini_key = st.session_state.gemini_api_key.strip() if st.session_state.gemini_api_key else ""
