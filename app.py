@@ -391,15 +391,22 @@ with col_grp1:
             if selected_product_val != "직접 입력":
                 db_product_info = products_db.get(selected_db_cat_val, {}).get(selected_product_val, {})
             db_link_text = db_product_info.get("link_text", "") if selected_product_val != "직접 입력" else ""
+            db_smartstore_link = db_product_info.get("smartstore_link", "") if selected_product_val != "직접 입력" else ""
+            
+            # 수동 링크 입력이 비어있고 내장 데이터베이스에 제휴 스마트스토어 링크가 있으면 우선적으로 활용합니다.
+            final_links = [l.strip() for l in links_input_val if l.strip()]
+            if not final_links and db_smartstore_link:
+                final_links = [db_smartstore_link]
+                
             st.session_state.edit_content = link_handler.assemble_post_with_links(
                 post_data=st.session_state.generated_post,
-                links=links_input_val,
+                links=final_links,
                 link_count=link_count_val,
                 product_name=products_display_val,
                 db_link_text=db_link_text
             )
             persist_current_state()
-            st.success("🔗 쇼커 링크 조립 완료!")
+            st.success("🔗 스마트스토어 제휴/쇼커 링크 자동 조립 완료!")
             st.rerun()
 
 with col_grp2:
