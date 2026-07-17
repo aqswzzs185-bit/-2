@@ -121,15 +121,14 @@ st.sidebar.markdown("프로그램 동작에 필요한 설정값을 입력하세�
 if "gemini_api_key" not in st.session_state:
     st.session_state.gemini_api_key = cfg.get("GEMINI_API_KEY", "")
 
-gemini_key = st.sidebar.text_input(
+# key="gemini_api_key" 단독 바인딩으로 Rerun 시 입력 롤백 원천 차단
+st.sidebar.text_input(
     "Google Gemini API Key", 
-    value=st.session_state.gemini_api_key, 
     type="password", 
+    key="gemini_api_key",
     help="Gemini API 키를 입력해 주세요."
 )
-if gemini_key:
-    st.session_state.gemini_api_key = gemini_key.strip()
-    gemini_key = st.session_state.gemini_api_key
+gemini_key = st.session_state.gemini_api_key.strip() if st.session_state.gemini_api_key else ""
 
 naver_id = st.sidebar.text_input("Naver ID", value=cfg.get("NAVER_ID", ""), help="네이버 블로그의 주인 아이디를 입력합니다. (비워둘 시 네이버 메인으로 이동)")
 naver_client_id = st.sidebar.text_input("Naver Client ID (데이터랩)", value=cfg.get("NAVER_CLIENT_ID", ""), type="password", help="네이버 데이터랩 수집용 Client ID")
